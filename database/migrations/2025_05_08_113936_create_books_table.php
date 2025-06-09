@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->integer('stock');
             $table->string('location')->nullable();
             $table->text('description')->nullable();
-            $table->string('cover')->nullable(); // kolom untuk gambar
+            $table->string('cover')->nullable(); 
             $table->timestamps();
         });
     }

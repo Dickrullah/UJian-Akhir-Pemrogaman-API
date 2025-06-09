@@ -16,7 +16,7 @@ class LoginRegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except([
-            'logout', 'dashboard'
+            'logout', 'dashboard', 'updatePassword'
         ]);
     }
 
@@ -125,5 +125,26 @@ class LoginRegisterController extends Controller
         return redirect()->route('login')
             ->withSuccess('Kamu Berhasil Logout');;
     }    
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'Password lama salah.']);
+        }
+
+        $user->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        return back()->withSuccess('Password berhasil diubah.');
+    }
+
 
 }

@@ -18,5 +18,6 @@ class Pemesanan extends Model
         'waktu_selesai',
         'status',
         'nomor_hp',
+        'keterangan',
     ];
 }

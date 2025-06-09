@@ -20,6 +20,7 @@
                     <th>Selesai</th>
                     <th>Status</th>
                     <th>HP</th>
+                    <th>Keterangan</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -40,6 +41,13 @@
                         </td>
                         <td>{{ $item->nomor_hp }}</td>
                         <td>
+                            @if ($item->status == 'pending')
+                                {{ $item->keterangan }}
+                            @else
+                                -
+                            @endif
+                        </td>
+                        <td>
                             <a href="{{ route('pemesanans.edit', $item->id) }}" class="btn btn-sm btn-outline-primary">Edit</a>
                             <form action="{{ route('pemesanans.destroy', $item->id) }}" method="POST" class="d-inline">
                                 @csrf @method('DELETE')
@@ -49,7 +57,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="10" class="text-center text-muted">Belum ada data pemesanan.</td>
+                        <td colspan="11" class="text-center text-muted">Belum ada data pemesanan.</td>
                     </tr>
                 @endforelse
             </tbody>

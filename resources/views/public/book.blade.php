@@ -54,6 +54,10 @@
                         <label class="form-label">Nomor HP</label>
                         <input type="text" class="form-control rounded-3" name="nomor_hp" value="{{ $pemesanan->nomor_hp ?? '' }}" required>
                     </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Keterangan</label>
+                        <input type="text" class="form-control rounded-3" name="keterangan" value="{{ $pemesanan->keterangan ?? '' }}" required>
+                    </div>
                 </div>
 
                 <div class="mt-4 text-end">

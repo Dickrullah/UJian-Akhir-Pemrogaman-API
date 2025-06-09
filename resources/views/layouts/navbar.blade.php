@@ -35,8 +35,9 @@
                     <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" href="{{ URL('/') }}">Homepage</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ (request()->is('about')) ? 'active' : '' }}" href="{{ URL('book') }}">About Us</a>
-                </li>
+                    <a class="nav-link {{ (request()->is('buku')) ? 'active' : '' }}" href="{{ URL('buku') }}">Buku</a>
+                <li class="nav-item">
+                    <a class="nav-link {{ (request()->is('aboutus')) ? 'active' : '' }}" href="{{ URL('aboutus') }}">About Us</a>
                 </li>
                 @guest
                     <li class="nav-item">
@@ -50,7 +51,7 @@
                         <a class="nav-link {{ (request()->is('pemesanans')) ? 'active' : '' }}" href="{{ route('pemesanans.index') }}">Ruangan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ (request()->is('jadwal')) ? 'active' : '' }}" href="{{ URL('buku') }}">Buku</a>
+                        <a class="nav-link {{ (request()->is('peminjaman')) ? 'active' : '' }}" href="{{ URL('peminjaman') }}">Peminjaman</a>
                     <li class="nav-item">
                         <a class="nav-link {{ (request()->is('jadwal')) ? 'active' : '' }}" href="{{ URL('dashboard') }}">Dashboard</a>
                     </li>    

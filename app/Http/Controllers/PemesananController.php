@@ -29,6 +29,7 @@ class PemesananController extends Controller
             'waktu_selesai' => 'required',
             'status' => 'required',
             'nomor_hp' => 'required',
+            'keterangan' => 'required',
         ]);
 
         Pemesanan::create($request->all());

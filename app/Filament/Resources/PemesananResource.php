@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Components\Select;
@@ -34,7 +35,7 @@ class PemesananResource extends Resource
                     ->label('Nomor Ruangan')
                     ->required()
                     ->maxLength(50),
-                
+
                 TextInput::make('nama_pemesan')
                     ->label('Nama Pemesan')
                     ->required()
@@ -71,6 +72,13 @@ class PemesananResource extends Resource
                     ->required()
                     ->tel()
                     ->maxLength(15),
+
+                Textarea::make('keterangan')
+                    ->label('Keterangan')
+                    ->maxLength(255)
+                    ->rows(3)
+                    ->requiredIf('status', 'pending')
+                    ->placeholder('Isi alasan atau keterangan jika status pending'),
             ]);
     }
 
@@ -91,6 +99,7 @@ class PemesananResource extends Resource
                         'success' => 'approved',
                     ]),
                 TextColumn::make('nomor_hp')->label('Nomor HP'),
+                TextColumn::make('keterangan')->label('Keterangan')->limit(30)->wrap(),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
