@@ -41,6 +41,7 @@ Route::controller(LoginRegisterController::class)->group(function() {
 });
 
 
+
 Route::resource('pemesanans', PemesananController::class);
 
 Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman.index');

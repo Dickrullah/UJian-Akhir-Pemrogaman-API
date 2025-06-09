@@ -22,32 +22,32 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login',    [AuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
+
+    // Profile & Logout
     Route::get('profile', [AuthController::class, 'profile']);
     Route::post('logout', [AuthController::class, 'logout']);
+
+    // Peminjaman
+    Route::get('/peminjaman', [PeminjamanApiController::class, 'index']);
+    Route::get('/peminjaman/{id}', [PeminjamanApiController::class, 'show']);
+    Route::post('/peminjaman', [PeminjamanApiController::class, 'store']);
+    Route::put('/peminjaman/{id}', [PeminjamanApiController::class, 'update']);
+    Route::delete('/peminjaman/{id}', [PeminjamanApiController::class, 'destroy']);
+
+    // Buku
+    Route::get('/buku', [BukuApiController::class, 'index']);
+    Route::get('/buku/{id}', [BukuApiController::class, 'show']);
+    Route::post('/buku', [BukuApiController::class, 'store']);
+    Route::put('/buku/{id}', [BukuApiController::class, 'update']);
+    Route::delete('/buku/{id}', [BukuApiController::class, 'destroy']);
+
+    // Pemesanan
+    Route::get('/pemesanan', [PemesananApiController::class, 'index']);
+    Route::post('/pemesanan', [PemesananApiController::class, 'store']);
+    Route::get('/pemesanan/{id}', [PemesananApiController::class, 'show']);
+    Route::put('/pemesanan/{id}', [PemesananApiController::class, 'update']);
+    Route::delete('/pemesanan/{id}', [PemesananApiController::class, 'destroy']);
+
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-
-
-Route::get('/peminjaman', [PeminjamanApiController::class, 'index']);
-Route::get('/peminjaman/{id}', [PeminjamanApiController::class, 'show']);
-Route::post('/peminjaman', [PeminjamanApiController::class, 'store']);
-Route::put('/peminjaman/{id}', [PeminjamanApiController::class, 'update']);
-Route::delete('/peminjaman/{id}', [PeminjamanApiController::class, 'destroy']);
-
-
-Route::get('/buku', [BukuApiController::class, 'index']);
-Route::get('/buku/{id}', [BukuApiController::class, 'show']);
-Route::post('/buku', [BukuApiController::class, 'store']);
-Route::put('/buku/{id}', [BukuApiController::class, 'update']);
-Route::delete('/buku/{id}', [BukuApiController::class, 'destroy']);
-
-
-Route::get('/pemesanan', [PemesananApiController::class, 'index']);
-Route::post('/pemesanan', [PemesananApiController::class, 'store']);
-Route::get('/pemesanan/{id}', [PemesananApiController::class, 'show']);
-Route::put('/pemesanan/{id}', [PemesananApiController::class, 'update']);
-Route::delete('/pemesanan/{id}', [PemesananApiController::class, 'destroy']);
